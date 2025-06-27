@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starial_app/ui_helper/util.dart';
 
-class CategoriesPage extends StatelessWidget{
+class CategoriesScreen extends StatelessWidget{
   final imageList = [
   Container(width: 230,height: 300,decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade200,blurRadius: 10,spreadRadius: 4, offset: Offset(0, 4))], color: Colors.grey.shade400, borderRadius: BorderRadius.circular(10)),),
   Container(width: 230,height: 300,decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade200,blurRadius: 10,spreadRadius: 4, offset: Offset(0, 4))], color: Colors.grey.shade400, borderRadius: BorderRadius.circular(10)),),

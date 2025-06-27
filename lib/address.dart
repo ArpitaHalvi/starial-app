@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starial_app/ui_helper/util.dart';
 
-class AddressPage extends StatelessWidget{
+class AddressScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starial_app/ui_helper/util.dart';
 
-class CartPage extends StatelessWidget{
+class CartScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     const cartItems = [

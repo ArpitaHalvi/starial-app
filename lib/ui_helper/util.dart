@@ -3,27 +3,52 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
-Container searchBar({searchText="Ncert Books", fontS=20.0}){
+Container searchBar({searchText="Search for items here.", fontS=20.0}){
   return Container(
     height: 50,
-    decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade600, spreadRadius: 1, blurRadius: 6, offset: Offset(0, 5))], borderRadius: BorderRadius.circular(40),),
-    child: TextField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-          hintText: 'Search for "$searchText"',
-          hintStyle: TextStyle(color: Colors.grey, fontSize: fontS),
-          fillColor: Colors.white,
-          filled: true,
-          prefixIcon: Icon(Icons.search, size: 30,),
-          suffixIcon: Icon(Icons.mic, size: 30),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
-              borderSide: BorderSide.none
-          )
-      ),
-    ),
+    decoration: BoxDecoration(color: Colors.white,boxShadow: [BoxShadow(color: Colors.grey.shade600, spreadRadius: 1, blurRadius: 6, offset: Offset(0, 5))], borderRadius: BorderRadius.circular(40),),
+    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+       Padding(
+         padding: const EdgeInsets.only(left: 10.0),
+         child: Row(children: [
+           InkWell(
+             // onTap: (){ Routes.navigateToSearchScreen(context); },
+             child: Icon(Icons.search, size: 30,),
+           ),
+           SizedBox(width: 10,),
+           Text(searchText, style: TextStyle(color: Colors.grey, fontSize: fontS),)
+         ],),
+       ),
+       Padding(
+         padding: const EdgeInsets.only(right: 10.0),
+         child: InkWell(
+          // onTap: (){
+          //   context.read<HomePageProvider>().setMicClickBtn(true);
+          //   Routes.navigateToSearchScreen(context);
+          // },
+          child: Icon(Icons.mic, size: 30,),
+               ),
+       )
+    ],
+    )
   );
 }
+
+// TextField(
+//       keyboardType: TextInputType.text,
+//       decoration: InputDecoration(
+//           hintText: 'Search for "$searchText"',
+//           hintStyle: TextStyle(color: Colors.grey, fontSize: fontS),
+//           fillColor: Colors.white,
+//           filled: true,
+//           prefixIcon: Icon(Icons.search, size: 30,),
+//           suffixIcon: Icon(Icons.mic, size: 30),
+//           border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(40),
+//               borderSide: BorderSide.none
+//           )
+//       ),
+//     ),
 
 LinearGradient gradientOne(){
   return LinearGradient(

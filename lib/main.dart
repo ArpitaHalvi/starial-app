@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:starial_app/address.dart';
 import 'package:starial_app/cart.dart';
@@ -24,17 +26,30 @@ class StarialApp extends StatelessWidget {
         )
       ),
       // home: HomeScreen(),
-      // home: LoginScreen(),
-      home: HomePage(),
-      // home: CategoriesPage(),
-      // home: CartPage(),
-      // home: AddressPage(),
+      home: LoginScreen(),
+      // home: HomePage(),
+      // home: CategoriesScreen(),
+      // home: CartScreen(),
+      // home: AddressScreen(),
       // home: OrderConfirmed(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 3), (){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+    });
+  }
   @override
   Widget build(BuildContext build){
     return Scaffold(
