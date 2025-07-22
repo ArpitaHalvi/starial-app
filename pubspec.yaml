@@ -82,6 +82,9 @@ flutter:
     - family: KolkerBrush
       fonts:
         - asset: assets/fonts/KolkerBrush.ttf
+    - family: SFProDisplay
+      fonts:
+        - asset: assets/fonts/SFProDisplay.otf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:starial_app/ui_helper/util.dart';
 
 class AddressScreen extends StatelessWidget{
+  const AddressScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

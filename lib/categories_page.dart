@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:starial_app/ui_helper/util.dart';
 
 class CategoriesScreen extends StatelessWidget{
+  CategoriesScreen({super.key});
+
   final imageList = [
   Container(width: 230,height: 300,decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade200,blurRadius: 10,spreadRadius: 4, offset: Offset(0, 4))], color: Colors.grey.shade400, borderRadius: BorderRadius.circular(10)),),
   Container(width: 230,height: 300,decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade200,blurRadius: 10,spreadRadius: 4, offset: Offset(0, 4))], color: Colors.grey.shade400, borderRadius: BorderRadius.circular(10)),),
   Container(width: 230,height: 300,decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey.shade200,blurRadius: 10,spreadRadius: 4, offset: Offset(0, 4))], color: Colors.grey.shade400, borderRadius: BorderRadius.circular(10)),),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +52,7 @@ class CategoriesScreen extends StatelessWidget{
                  Text("Uniform Accessories" ,style: TextStyle(fontSize: 30)),
                  rectangleObjects()
                ],)),),
-               endOfPage()
+               // endOfPage()
              ],
              ),
            ),

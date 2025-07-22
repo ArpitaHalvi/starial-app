@@ -3,16 +3,23 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:starial_app/address.dart';
 import 'package:starial_app/cart.dart';
+import 'package:starial_app/free-delivery.dart';
 import 'package:starial_app/home_page.dart';
 import 'package:starial_app/categories_page.dart';
+import 'package:starial_app/loading_page.dart';
+import 'package:starial_app/novels-dedicated-page.dart';
+import 'package:starial_app/office_stationery_dedicated_page.dart';
 import 'package:starial_app/order_confirmed.dart';
 import 'package:starial_app/ui_helper/util.dart';
+import 'package:starial_app/uniform-dedicated-page.dart';
 
 void main() {
   runApp(StarialApp());
 }
 
 class StarialApp extends StatelessWidget {
+  const StarialApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,23 +27,30 @@ class StarialApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
-        fontFamily: 'K2D',
+        fontFamily: 'SFProDisplay',
         textTheme: TextTheme(
           headlineSmall: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)
         )
       ),
+      // home: OfficeStationeryDedicatedPage(),
+      // home: NovelsDedicatedPage(),
+      // home: UniformDedicatedPage(),
+      // home: FreeDeliveryPopUp(),
       // home: HomeScreen(),
-      home: LoginScreen(),
+      // home: LoadingPage(),
+      // home: LoginScreen(),
       // home: HomePage(),
       // home: CategoriesScreen(),
       // home: CartScreen(),
       // home: AddressScreen(),
-      // home: OrderConfirmed(),
+      home: OrderConfirmed(),
     );
   }
 }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -44,7 +58,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3), (){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
@@ -82,13 +95,29 @@ class CountryCode{
   CountryCode({required this.flagPath, required this.dialCode});
 }
 
-class LoginScreen extends StatelessWidget{
+class LoginScreen extends StatefulWidget{
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  // void initState() {
+  //   super.initState();
+  //   Timer(Duration(seconds: 3), (){
+  //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoadingPage()));
+  //   });
+  // }
   final List<CountryCode> countryCodes = [
     CountryCode(flagPath: "assets/images/flag.png", dialCode: '+91'),
     CountryCode(flagPath: "assets/images/flag.png", dialCode: '+1'),
     CountryCode(flagPath: "assets/images/flag.png", dialCode: '+44'),
   ];
+
   CountryCode? selectedCode;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,11 +130,11 @@ class LoginScreen extends StatelessWidget{
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [Color(0xFF00FFFF), Color(0xFF0040FF)]
+                      colors: [Color(0xFF66FFFF), Color(0xFF668CFF)]
                   )
               ),
           ),
-          Positioned(top: 20, left: 0, right: 0, child: Image.asset("assets/images/app-logo.png")),
+          Positioned(top: 50, left: 0, right: 0, child: Image.asset("assets/images/app-logo.png",height: 100,)),
           Positioned(bottom: 0, left: 0, right: 0, child: Padding(padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                 child: Container(
                   width: 400,

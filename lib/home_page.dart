@@ -3,6 +3,8 @@ import 'package:starial_app/ui_helper/util.dart';
 
 
 class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+
   @override
   _HomePage createState() => _HomePage();
 }
@@ -190,7 +192,7 @@ class _HomePage extends State<HomePage>{
             Container(color: Colors.white,child: Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0), child: rectangleObjects())),
             Container(color: Colors.white,child: Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0), child: rectangleObjects(crossAxisCount: 1, itemCount: 1, childAspectRatio: 2))),
             Container(color: Colors.white, child: Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0), child: squareObjects())),
-            endOfPage()
+            // endOfPage()
           ],
         ),
       ),
