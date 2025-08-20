@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starial_app/ui_helper/util.dart';
 
 class OrderConfirmed extends StatelessWidget{
   const OrderConfirmed({super.key});

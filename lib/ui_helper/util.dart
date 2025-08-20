@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -321,3 +323,649 @@ Column endOfPage(context){
     )
   ],);
 }
+
+BoxDecoration containerDecoration({String bannerUrl = ''}){
+  return BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Colors.white,
+    image: bannerUrl != '' ? DecorationImage(
+      image: NetworkImage(bannerUrl),
+      fit: BoxFit.cover,
+    ) : null,
+  );
+}
+
+BoxDecoration parentContainerDecor(
+    {String bannerUrl = '',Color bgColor = Colors.greenAccent}){
+  return BoxDecoration(
+    color: bgColor,
+    image: bannerUrl != '' ? DecorationImage(
+      image: NetworkImage(bannerUrl),
+      fit: BoxFit.cover,
+    ) : null,
+  );
+}
+
+// DIFFERENT STYLES
+Widget defaultCategoryStyle({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+  return Container(
+    width: double.infinity,
+    // height: 300,
+    decoration: parentContainerDecor(),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        //   child: Container(
+        //     height: 210,
+        //     // color: Colors.yellow,
+        //     child: GridView.builder(
+        //         padding: EdgeInsets.zero,
+        //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //             crossAxisCount: 4, crossAxisSpacing: 15,
+        //             mainAxisSpacing: 20, childAspectRatio: 1,
+        //         ),
+        //         itemCount: itemCount,
+        //         itemBuilder: (context,index){
+        //           return InkWell(
+        //             onTap:(){},
+        //             child: Container(
+        //               decoration: containerDecoration()
+        //             )
+        //           );
+        //         }
+        //     ),
+        //   ),
+        // )
+        SizedBox(height: 100,),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+          child: Column(
+            children: List.generate((itemCount / 4).ceil(), (rowIndex) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Row(
+                  children: List.generate(4, (colIndex) {
+                    final itemIndex = rowIndex * 4 + colIndex;
+                    return itemIndex < itemCount ? _buildBox1(width: 80,height: 80) : SizedBox.shrink();
+                  }),
+                ),
+              );
+            }),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget categoryStyle1({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 6}){
+  return Container(
+    width: double.infinity,
+    height: 400,
+    decoration: parentContainerDecor(),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          child: SizedBox(
+            height: 300,
+            child: Column(
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.all(10.0),
+                //   child: Container(
+                //      width: double.infinity,height: 100,
+                //      decoration : containerDecoration(),
+                //   ),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: _buildBox1(width: double.infinity),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                            child: Container(
+                              decoration : containerDecoration(),
+                            ),
+                          )
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                              child: Container(
+                                decoration : containerDecoration(),
+                              ),
+                            )),
+                            Expanded(child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                              child: Container(
+                                decoration : containerDecoration(),
+                              ),
+                            )),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(0,0,5,5),
+                            //   child: _buildBox1(width: double.infinity,height: 85),
+                            // ),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(0,0,5,10),
+                            //   child: _buildBox1(width: double.infinity,height: 80),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                            child: Container(
+                              decoration : containerDecoration(),
+                            ),
+                          )
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )
+          ),
+        )],
+    ),
+  );
+}
+
+Widget categoryStyle2({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 4}){
+  return Container(
+    width: double.infinity,
+    // height: 500,
+    decoration: parentContainerDecor(),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(height: 100,),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          //   child: Container(
+          //     height: 190,
+          //     // color: Colors.yellow,
+          //     child: GridView.builder(
+          //         padding: EdgeInsets.zero,
+          //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 2, crossAxisSpacing: 10,
+          //           mainAxisSpacing: 10, childAspectRatio: 2.2,
+          //         ),
+          //         itemCount: itemCount,
+          //         itemBuilder: (context,index){
+          //           return InkWell(
+          //             onTap:(){},
+          //             child: Container(
+          //               // width: 80,
+          //               // height: 80,
+          //               decoration: BoxDecoration(
+          //                 color: Colors.yellowAccent,
+          //                 borderRadius: BorderRadius.circular(10),
+          //                 image: bannerUrl != null ? DecorationImage(
+          //                   image: NetworkImage(bannerUrl),
+          //                   fit: BoxFit.cover,
+          //                 ) : null,
+          //               ),
+          //             ),
+          //           );
+          //         }
+          //     ),
+          //   ),
+          // )
+          Row(
+            children: List.generate(2, (index){
+              return _buildBox1(height: 170);
+            }),
+          ),
+          SizedBox(height: 10,),
+          Row(
+            children: List.generate(2, (index){
+              return _buildBox1(height: 170);
+            }),
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Widget categoryStyle3({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+  return Container(
+    width: double.infinity,
+    height: 200,
+    decoration: parentContainerDecor(),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: SizedBox(
+            height: 70,
+            // color: Colors.yellow,
+            child: ListView.builder(
+                itemCount: itemCount,
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context,index){
+              return Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: InkWell(
+                  onTap:(){},
+                  child: Container(
+                    width: 150,
+                    decoration: containerDecoration(),
+                  ),
+                ),
+              );
+            })
+          ),
+        )],
+    ),
+  );
+}
+
+Widget categoryStyle4({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+  return Container(
+    width: double.infinity,
+    height: 300,
+    decoration: parentContainerDecor(),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: SizedBox(
+              height: 180,
+              // color: Colors.yellow,
+              child: ListView.builder(
+                  itemCount: itemCount,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  itemBuilder: (context,index){
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: InkWell(
+                        onTap:(){},
+                        child: Container(
+                          width: 130,
+                          decoration: containerDecoration(),
+                        ),
+                      ),
+                    );
+                  })
+          ),
+        )],
+    ),
+  );
+}
+
+Widget defaultSubCategoryStyle({String bannerUrl = ''}){
+  return Container(
+    decoration: parentContainerDecor(),
+    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(height: 100,),
+        Row(
+          children: List.generate(2, (index){
+            return _buildBox1();
+          }),
+        ),
+        SizedBox(height: 10,),
+        Row(
+          children: List.generate(3, (index){
+            return _buildBox1();
+          }),
+        )
+      ]
+    ),
+  );
+}
+
+Widget subcategoryStyle1({int itemCount = 6}){
+  return Container(
+    decoration: parentContainerDecor(),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 100,),
+          Column(
+            children: List.generate((itemCount / 2).ceil(), (rowIndex) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Row(
+                  children: List.generate(2, (colIndex) {
+                    final itemIndex = rowIndex * 2 + colIndex;
+                    return itemIndex < itemCount ? _buildBox1(height: 90) : SizedBox.shrink();
+                  }),
+                ),
+              );
+            }),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget subcategoryStyle2(){
+  return Container(
+    decoration: parentContainerDecor(),
+    child: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 100,),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildBox1(flex: 2),
+                _buildBox1(flex: 1),
+              ]
+          ),
+          SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(3, (index) {
+              return _buildBox1();
+            }),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget subcategoryStyle3(){
+  return Container(
+    decoration: parentContainerDecor(),
+    child: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 100),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildBox1(flex: 1),
+                _buildBox1(flex: 2),
+              ]
+          ),
+          SizedBox(height: 10,),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildBox1(flex: 2),
+                _buildBox1(flex: 1),
+              ]
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildBox1({String categoryImg = '',int flex = 1,double width = 100,double height = 100}) {
+  return Expanded(
+    flex: flex,
+    child: InkWell(
+      onTap: (){},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: SizedBox(
+          width: width,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network('', width: double.infinity, height: height, fit: BoxFit.cover,
+                    // loadingBuilder: (context, child, loadingProgress) {
+                    //   if (loadingProgress == null) return child;
+                    //   return Shimmer.fromColors(
+                    //     baseColor: Colors.grey[300]!,
+                    //     highlightColor: Colors.grey[100]!,
+                    //     child: Container(width: 100, height: 100, color: Colors.white,),
+                    //   );
+                    // },
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(height: height, color: Colors.grey.shade300,
+                        child: const Center(child: Icon(Icons.broken_image, size: 40, color: Colors.grey),),
+                      );
+                    },
+                  ),
+                ),
+              ]
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+// DIFFERENT STYLES
+// Widget defaultCategoryStyle({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+//   return Container(
+//     width: double.infinity,
+//     height: 300,
+//     decoration: parentContainerDecor(),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//           child: SizedBox(
+//             height: 210,
+//             child: GridView.builder(
+//                 padding: EdgeInsets.zero,
+//                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                   crossAxisCount: 4, crossAxisSpacing: 15,
+//                   mainAxisSpacing: 20, childAspectRatio: 1,
+//                 ),
+//                 itemCount: itemCount,
+//                 itemBuilder: (context,index){
+//                   return InkWell(
+//                     onTap:(){},
+//                     child: Container(
+//                       decoration: containerDecoration(),
+//                     ),
+//                   );
+//                 }
+//             ),
+//           ),
+//         )],
+//     ),
+//   );
+// }
+//
+// Widget categoryStyle1({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 6}){
+//   return Container(
+//     width: double.infinity,
+//     height: 400,
+//     decoration: parentContainerDecor(),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+//           child: SizedBox(
+//               height: 300,
+//               child: Column(
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(10.0),
+//                     child: Container(
+//                       width: double.infinity,height: 100,
+//                       decoration : containerDecoration(),
+//                     ),
+//                   ),
+//                   Expanded(
+//                     child: Row(
+//                       children: [
+//                         Expanded(
+//                             child: Padding(
+//                               padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+//                               child: Container(
+//                                 decoration : containerDecoration(),
+//                               ),
+//                             )
+//                         ),
+//                         Expanded(
+//                           child: Column(
+//                             children: [
+//                               Expanded(
+//                                   child: Padding(
+//                                     padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+//                                     child: Container(
+//                                       decoration : containerDecoration(),
+//                                     ),
+//                                   )),
+//                               Expanded(child: Padding(
+//                                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+//                                 child: Container(
+//                                   decoration : containerDecoration(),
+//                                 ),
+//                               ))
+//                             ],
+//                           ),
+//                         ),
+//                         Expanded(
+//                             child: Padding(
+//                               padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+//                               child: Container(
+//                                 decoration : containerDecoration(),
+//                               ),
+//                             )
+//                         ),
+//                       ],
+//                     ),
+//                   )
+//                 ],
+//               )
+//           ),
+//         )],
+//     ),
+//   );
+// }
+//
+// Widget categoryStyle2({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 4}){
+//   return Container(
+//     width: double.infinity,
+//     height: 300,
+//     decoration: parentContainerDecor(),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//           child: SizedBox(
+//             height: 190,
+//             child: GridView.builder(
+//                 padding: EdgeInsets.zero,
+//                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                   crossAxisCount: 2, crossAxisSpacing: 10,
+//                   mainAxisSpacing: 10, childAspectRatio: 2.2,
+//                 ),
+//                 itemCount: itemCount,
+//                 itemBuilder: (context,index){
+//                   return InkWell(
+//                     onTap:(){},
+//                     child: Container(
+//                       decoration: containerDecoration(),
+//                     ),
+//                   );
+//                 }
+//             ),
+//           ),
+//         )],
+//     ),
+//   );
+// }
+//
+// Widget categoryStyle3({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+//   return Container(
+//     width: double.infinity,
+//     height: 200,
+//     decoration: parentContainerDecor(),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(vertical: 15.0),
+//           child: SizedBox(
+//               height: 70,
+//               child: ListView.builder(
+//                   itemCount: itemCount,
+//                   scrollDirection: Axis.horizontal,
+//                   padding: EdgeInsets.symmetric(horizontal: 10),
+//                   itemBuilder: (context,index){
+//                     return Padding(
+//                       padding: const EdgeInsets.only(right: 10.0),
+//                       child: InkWell(
+//                         onTap:(){},
+//                         child: Container(
+//                           width: 150,
+//                           decoration: containerDecoration(),
+//                         ),
+//                       ),
+//                     );
+//                   })
+//           ),
+//         )],
+//     ),
+//   );
+// }
+//
+// Widget categoryStyle4({Color cardColor = Colors.pink,String? bannerUrl, String cardImages = '',int itemCount = 8}){
+//   return Container(
+//     width: double.infinity,
+//     height: 300,
+//     decoration: parentContainerDecor(),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(vertical: 15.0),
+//           child: SizedBox(
+//               height: 180,
+//               child: ListView.builder(
+//                   itemCount: itemCount,
+//                   scrollDirection: Axis.horizontal,
+//                   padding: EdgeInsets.symmetric(horizontal: 10),
+//                   itemBuilder: (context,index){
+//                     return Padding(
+//                       padding: const EdgeInsets.only(right: 10.0),
+//                       child: InkWell(
+//                         onTap:(){},
+//                         child: Container(
+//                           width: 130,
+//                           decoration: containerDecoration(),
+//                         ),
+//                       ),
+//                     );
+//                   })
+//           ),
+//         )],
+//     ),
+//   );
+// }

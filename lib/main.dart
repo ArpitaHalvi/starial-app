@@ -1,8 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:starial_app/address.dart';
 import 'package:starial_app/cart.dart';
+import 'package:starial_app/different-styles.dart';
+import 'package:starial_app/print_document.dart';
+import 'package:starial_app/print_documents_preview.dart';
+import 'package:starial_app/scan_file.dart';
 import 'package:starial_app/free-delivery.dart';
 import 'package:starial_app/home_page.dart';
 import 'package:starial_app/categories_page.dart';
@@ -10,11 +15,19 @@ import 'package:starial_app/loading_page.dart';
 import 'package:starial_app/novels-dedicated-page.dart';
 import 'package:starial_app/office_stationery_dedicated_page.dart';
 import 'package:starial_app/order_confirmed.dart';
+import 'package:starial_app/tip_delivery_partner.dart';
 import 'package:starial_app/ui_helper/util.dart';
 import 'package:starial_app/uniform-dedicated-page.dart';
 
+import 'DocumentProvider.dart';
+
 void main() {
-  runApp(StarialApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => DocumentProvider()),
+    ],
+    child: StarialApp(),
+  ),);
 }
 
 class StarialApp extends StatelessWidget {
@@ -37,16 +50,22 @@ class StarialApp extends StatelessWidget {
       // home: UniformDedicatedPage(),
       // home: FreeDeliveryPopUp(),
       // home: HomeScreen(),
+      // home: TipDeliveryPartner()
       // home: LoadingPage(),
       // home: LoginScreen(),
       // home: HomePage(),
       // home: CategoriesScreen(),
       // home: CartScreen(),
       // home: AddressScreen(),
-      home: OrderConfirmed(),
+      // home: OrderConfirmed(),
+      // home: DifferentStyles(),
+      // home: ScanFile(),
+      // home: PrintDocumentsPreview(),
+      home: PrintDocument(),
     );
   }
 }
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,9 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
-    });
+    // Timer(Duration(seconds: 3), (){
+    //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+    // });
   }
   @override
   Widget build(BuildContext build){
